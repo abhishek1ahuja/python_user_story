@@ -1,0 +1,24 @@
+<html>
+  <body>
+    <h1>Users</h1>
+    <form method="POST" action="/users">
+        <input type="text" name="username">
+        <input type="text" name="user_type">
+        <input type="submit" value="Add">
+    </form>
+
+    <h1>Users</h1>
+    {% for user in users %}
+  <p>{{user.username}} --- {{user.user_type}}</p>
+  <form method="POST" action="./update">
+    <input type="hidden" value="{{user.user_type}}" name="old_user_type">
+    <input type="text" value="{{user.user_type}}" name="new_user_type">
+    <input type="submit" value="Update">
+  </form>
+  <form method="POST" action="./delete">
+  <input type="hidden" value="{{user.username}}" name="title">
+  <input type="submit" value="Delete">
+</form>
+{% endfor %}
+  </body>
+</html>
